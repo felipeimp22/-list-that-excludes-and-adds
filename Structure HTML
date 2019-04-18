@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="8">
+    </head>
+    <body>
+        <div id = "app">
+        <ul>
+        </ul>
+        <input type="text"  placeholder="Digite um to do">
+        <button>Adicionar</button>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
