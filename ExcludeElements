@@ -1,0 +1,5 @@
+function excludeToDo(positionToDo){
+    toDo.splice(positionToDo, 1); // exclui uma quantidade de array que foi dado no 1 paremetro como posição e no segundo a quantia, ex (0,1) da primeira posição exclui 1.
+    renderToDos();
+    saveStorage();
+}
