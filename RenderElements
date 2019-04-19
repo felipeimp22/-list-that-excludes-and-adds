@@ -1,0 +1,23 @@
+function renderToDos(){
+    listElement.innerHTML = '';  // faz com oque o input na hora de executar a função addToDo não retorne todas as informações da array, apenas a adicionada no input 
+    for(toDos of toDo){// varivel criada no parametro "toDos" vai percorrer a array toDo.
+        var toDoElement = document.createElement('li');
+        var toDoText = document.createTextNode(toDos);
+        
+        var linkElement = document.createElement("a");
+        linkElement.setAttribute('href', '#'); // o botao de excluir precisa desse atributo se não o mesmo não fica disponivel para clicar.
+        var linkText = document.createTextNode(' exclude')
+
+        var positionToDo = toDo.indexOf(toDos);
+        linkElement.setAttribute("onclick", "excludeToDo("+ positionToDo +")");
+
+
+        linkElement.appendChild(linkText);
+
+        toDoElement.appendChild(toDoText);
+        listElement.appendChild(toDoElement);
+        toDoElement.appendChild(linkElement);
+
+   
+    }
+}
