@@ -1,0 +1,5 @@
+var toDo = JSON.parse(localStorage.getItem('listToDo'))||[]; 
+
+function saveStorage(){
+    localStorage.setItem('listToDo', JSON.stringify(toDo));
+}
