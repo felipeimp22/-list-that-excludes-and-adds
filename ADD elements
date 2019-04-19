@@ -1,0 +1,8 @@
+function addToDo(){
+   
+    var toDoText = inputElement.value;
+    toDo.push(toDoText);
+    inputElement.value="";
+    renderToDos();
+    saveStorage();
+}
