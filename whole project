@@ -1,0 +1,49 @@
+var listElement = document.querySelector("#app ul");
+var inputElement = document.querySelector("#app input");
+var buttonElement = document.querySelector("#app button");
+
+var toDo = JSON.parse(localStorage.getItem('listToDo'))||[];  // || <--significa ou, como o toDO não é uma array e o rendertoDos precisa de um valor de array para percorrer, é usado o || [] para declarar um valor vazio para assim ele percorrer oque tem dentro do storage.
+function renderToDos(){
+    listElement.innerHTML = '';  // faz com oque o input na hora de executar a função addToDo não retorne todas as informações da array, apenas a adicionada no input 
+    for(toDos of toDo){// varivel criada no parametro "toDos" vai percorrer a array toDo.
+        var toDoElement = document.createElement('li');
+        var toDoText = document.createTextNode(toDos);
+        
+        var linkElement = document.createElement("a");
+        linkElement.setAttribute('href', '#'); // o botao de excluir precisa desse atributo se não o mesmo não fica disponivel para clicar.
+        var linkText = document.createTextNode(' exclude')
+
+        var positionToDo = toDo.indexOf(toDos);
+        linkElement.setAttribute("onclick", "excludeToDo("+ positionToDo +")");
+
+
+        linkElement.appendChild(linkText);
+
+        toDoElement.appendChild(toDoText);
+        listElement.appendChild(toDoElement);
+        toDoElement.appendChild(linkElement);
+
+   
+    }
+}
+renderToDos();
+
+function addToDo(){
+   
+    var toDoText = inputElement.value;
+    toDo.push(toDoText);
+    inputElement.value="";
+    renderToDos();
+    saveStorage();
+}
+
+buttonElement.onclick = addToDo; // pode fazer desse jeito ou entao colocar no html colocar <button onclick="addToDo()"></button>
+
+function excludeToDo(positionToDo){
+    toDo.splice(positionToDo, 1); // exclui uma quantidade de array que foi dado no 1 paremetro como posição e no segundo a quantia, ex (0,1) da primeira posição exclui 1.
+    renderToDos();
+    saveStorage();
+}
+function saveStorage(){
+    localStorage.setItem('listToDo', JSON.stringify(toDo));
+}
